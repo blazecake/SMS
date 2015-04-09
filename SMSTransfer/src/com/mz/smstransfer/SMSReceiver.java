@@ -1,5 +1,6 @@
 package com.mz.smstransfer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -43,9 +44,9 @@ public class SMSReceiver extends BroadcastReceiver {
                 }
                 
                 for(SmsMessage curMsg:msg){
-                    sb.append("From:【");
+                    sb.append("From:");
                     sb.append(curMsg.getDisplayOriginatingAddress());
-                    sb.append("】Content：");
+                    sb.append(" Content：");
                     sb.append(curMsg.getDisplayMessageBody());
                 }
                 sendSMS(context, phone, sb.toString());
@@ -69,11 +70,12 @@ public class SMSReceiver extends BroadcastReceiver {
                 deliverIntent, 0);  
   
         SmsManager sms = SmsManager.getDefault();  
-        if (message.length() > 70) {
-            List<String> msgs = sms.divideMessage(message);
+        
+        if (getLength(message) > (140-7)) {
+            ArrayList<String> msgs = sms.divideMessage(message);
             for (String msg : msgs) {  
                 sms.sendTextMessage(phoneNumber, null, msg, sentPI, deliverPI);  
-            }  
+            }
         } else {
             sms.sendTextMessage(phoneNumber, null, message, sentPI, deliverPI);  
         }
@@ -121,5 +123,21 @@ public class SMSReceiver extends BroadcastReceiver {
 //        new IntentFilter(DELIVERED_SMS_ACTION));  
   
     }
+    
+    private int getLength(String msg){
+    	if(msg==null){
+    		return 0;
+    	}
+    	int count=0;
+    	for(int i=0; i<msg.length(); i++){
+    		if(msg.charAt(i)>255){
+    			count+=2;
+    		}else{
+    			count+=1;
+    		}
+    	}
+    	return count;
+    }
+    
 
 }
