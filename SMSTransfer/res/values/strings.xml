@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SMSTransfer</string>
+    <string name="queding">确定</string>
+    <string name="qingshurujieshouduanxinshoujihao">请输入接收短信手机号</string>
+    <string name="weishezhishoujihao">未设置手机号</string>
+    <string name="shezhichenggong">设置成功</string>
+
+</resources>

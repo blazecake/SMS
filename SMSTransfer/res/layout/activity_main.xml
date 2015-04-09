@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.mz.smstransfer.MainActivity" >
+
+    <TextView
+        android:id="@+id/main_tv_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="本应用只负责转发短信至指定手机号，将产生转发短信费用，费用由运营商收取\n\n若要停止转发请在应用中停止或卸载应用" />
+    
+    <EditText
+        android:id="@+id/main_et_receivePhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_tv_tip"
+        android:layout_marginTop="10dp"
+        android:hint="@string/qingshurujieshouduanxinshoujihao" />
+    
+    <Button 
+        android:id="@+id/main_btn_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/queding"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/main_et_receivePhone"
+        />
+
+</RelativeLayout>
